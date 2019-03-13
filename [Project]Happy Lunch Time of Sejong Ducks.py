@@ -1,16 +1,20 @@
 GlowScript 2.5 VPython
 
-#세종 오리들의 해피 런치 타임(Happy Lunch Time of Sejong Ducks)
+##Project: 세종오리들의 해피런치타임( Happy Lunch Time of Sejong Ducks)
 
 
 ####################################필드 만들기#################################
 sky = box(pos=vec(0,0,0), size=vec(1000,1000,1000), color=color.white)  #큰 박스 = 하늘
-sky_under = box(pos=vec(0,-70,0), size=vec(1000,0.3,1000))  #깔끔한 배경을 만들기 위해 삽입
+sky_under = box(pos=vec(0,-70,0), size=vec(1000,0.3,1000))  #박스랑 물 y길이 차이가 커서 넣은 것. 확대해보면 이해할 수 있을거야
 water_gameplay = box(pos = vec(0,0,0), size = vec(250,140,125), color = color.cyan, opacity = 0.3)
 ground_right = box(pos=vec(135,69.7,0), size=vec(20,0.3,150), color=color.green)
 ground_left = box(pos=vec(-135,69.7,0), size=vec(20,0.3,150), color=color.green)
 ground_up = box(pos=vec(0,69.7,-70), size=vec(290,0.3,20), color=color.green)
 ground_down = box(pos=vec(0,69.7,70), size=vec(290,0.3,20), color=color.green)
+ 
+ 
+ 
+ 
 #####################################기본 정보##################################
 scene.title = "<세종오리들의 해피 런치타임>     4조作 "
 scene.center = vec(0,0,0)
@@ -37,7 +41,7 @@ duck.m = duck.rho*duck.volume #질량=밀도*부피
  
 g = vec(0,-0.98,0) #중력
 kv = 100 #유체저항력
-kv_im = kv #물 표면에서 움직일때 저항력 
+kv_im = kv #물 표면에서 움직일때 저항력 -> 나중에 코딩!!
 t = 0
 dt = 0.05
 thold = 0.001 #간격 보정용
@@ -47,12 +51,25 @@ life = 5 #생명
 score = 0 #점수
 mylabel = label(pos = vec(170,110,0)) #점수판
  
-
+#def reset(button):
+    #btn_Start.disabled = False
+    #duck.pos = vec(0,70,0)
+ 
+ 
+ 
+####물고기
+#(물고기의 기본형)
+#fish_body =ellipsoid(pos = vec(0,0,0), length = 10, height=5, width = 3)
+#fish_eyes = sphere(pos = vec(-3,1,2), radius = 0.5, color=color.black)
+#fish_tail = cone(pos=vector(8,0,0), axis=vector(-5,0,0), radius=3)
+#fish=compound([fish_body, fish_tail, fish_eyes])
+ 
 #오른쪽에서 왼쪽으로 가는 물고기
 rbodyList=[]
 reyesList=[]
 rtailList=[]
 robjList=[]
+ 
 for i in range(0,5):
     rbodyList.append(ellipsoid(pos = vec(0,0,0), length = 10, height=5, width = 3, color = vec(random(),random(),random())))
 for i in range(0,5):
@@ -63,7 +80,7 @@ for i in range(0,5):
     robjList.append(compound([rbodyList[i], rtailList[i], reyesList[i]]))
     
 for i in range(0,5):
-    robjList[i].pos=vec(125,60-120*random(),0)
+    robjList[i].pos=vec(125,70-125*random(),0)
     robjList[i].v=(-1)*vec(random(),0,0)
     #속도가 너무 느린 물고기를 방지하기 위한 코드
     if robjList[i].v.x > -0.2:
@@ -96,7 +113,6 @@ for i in range(0,5):
  
 rcntlist=[]
 lcntlist=[]
-
 for i in range(0,5):
     rcntlist.append(0)
 for i in range(0,5):
@@ -105,17 +121,23 @@ def fish():
     for i in range(0,5):
         robjList[i].pos = robjList[i].pos + robjList[i].v*dt
         lobjList[i].pos = lobjList[i].pos + lobjList[i].v*dt
-           
+        
+        #if i>0 and i<5:
+            #if robjList[i-1].pos.y - robjList[i].pos.y < 10:
+            #    robjList[i].pos.y = robjList[i].pos.y - 25
+            #if lobjList[i-1].pos.y - lobjList[i].pos.y < 10:
+            #    lobjList[i].pos.y = lobjList[i].pos.y - 25    
+            
             #물고기가 수조 끝에 닿을때
             
         if robjList[i].pos.x<-120:
-            rcntlist[i]=0  
-            robjList[i].pos=vec(125,60-120*random(),0)
+            rcntlist[i]=0  # 요 코드는 무슨 의미 ?
+            robjList[i].pos=vec(125,70-125*random(),0)
             robjList[i].visible = True
                 
         if lobjList[i].pos.x>120:
             lcntlist[i]=0
-            lobjList[i].pos=vec(-125,60-120*random(),0)
+            lobjList[i].pos=vec(-125,70-125*random(),0)
             lobjList[i].visible = True
                 
         if robjList[i].pos.y <= -70 or robjList[i].pos.y>70:
@@ -125,23 +147,58 @@ def fish():
  
  
  
+ 
+#공기방울
+#edge = sphere(pos = vec(0,0,0), color = color.white, radius = 3, opacity =  0.5)
+#pong = sphere(pos = vec(0,0,0), color = color.cyan, radius = 2.8)
+#point = sphere(pos = vec(-1,1,1.3), color = color.white, radius = 1)
+ 
+ 
+ 
+ 
+ 
+############################필드 벗어나지 못하게 만들기#########################
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 ######################################키 조작###################################
 cnt=0
-
-
+ 
+#duck_position_judge = []
  
 def keydown(evt):
     global s
     s = evt.key
     if s == 'left':
+        #duck_position_judge.append(-2)
+        #if cnt == 0:
         global dthrust
         dthrust=vec(-1000,0,0)
-     
-    if s == 'right':
+            #cnt += 1
+        #else:
+            #if duck_position_judge[cnt-1] == 2:
+            #global dthrust
+            #dthrust=vec(-15000,0,0)
+                #duck = duck.rotate(angle=pi, axis=vec(0,1,0))
+                #cnt += 1
         
+    if s == 'right':
+        #duck_position_define.judge(2)
+        #if cnt == 0:
         global dthrust
         dthrust=vec(1000,0,0)
-         
+            #duck = duck.rotate(angle=pi, axis=vec(0,1,0))
+            #cnt += 1
+        #else:
+            #if duck_position_judge[cnt-1] == -2:
+                #global dthrust
+                #dthrust=vec(15000,0,0)
+                #duck = duck.rotate(angle=pi, axis=vec(0,1,0))
+                #cnt += 1
                             
         
     if s == 'up':
@@ -184,7 +241,7 @@ scene.bind('keyup', keyup)
 #####################################재  생#####################################
 judge = 0
 time=0
-
+error=0
 while(1):
     rate(80)
     #점수 표시(점수판)
@@ -194,13 +251,8 @@ while(1):
     if life==0:
         mylabel.text='GAME OVER'
         break;
-    if score==750:
-        mylabel.text= '축하합니다!'
-        break;
-
-
-###########################오리가 둥실거리게 하는 코드##########################
-    
+        
+    #오리 힘 조절하기
     if(duck.pos.y>65 and duck.pos.y<=70):
         duck.f = duck.m*g
         duck.f = duck.f - kv_im*mag(duck.v)**2*norm(duck.v) #물의 저항력. 속도**2에 반대방향으로.
@@ -209,8 +261,8 @@ while(1):
     else:
         duck.f=duck.m*g
         duck.f = duck.f + dthrust
-   
- 
+    #print duck.f
+    #물고기 움직임
     for i in range(0,5):
         
         if -10<robjList[i].pos.x-duck.pos.x<10 and -10<robjList[i].pos.y-duck.pos.y<10:
@@ -230,6 +282,7 @@ while(1):
     
     duck.v = duck.v + duck.f/duck.m*dt
     
+    #오리 방향
     if k==0:
         #if error==0:
         if duck.v.x>0:
@@ -242,50 +295,41 @@ while(1):
  
     fish()
  
-###################오리가 밖으로 벗어나지 못하게 하는 코드 #####################   
+   
     
     #필드 벗어남: life -= 1
-    # 위로 벗어났을 때 
     if duck.pos.y>=70+15:
         duck.pos=vec(0,70,0)
         life=life-1
-        
-        #오리가 뒤집히지 않도록 설정하는 코드 
         if duck.v.x>0:
             duck.rotate(angle=pi, axis=vec(0,1,0))
-       
+        #    error=1
+            
+        
         dthrust=vec(0,0,0)
         duck.v=vec(0,0,0)
-        
-    #오리가 왼쪽으로 벗어났을 때. 
     else if duck.pos.x<=-(125+5):
         duck.pos=vec(0,70,0)
         life=life-1
-        
         if duck.v.x>0:
             duck.rotate(angle=pi, axis=vec(0,1,0))
-           
+            #error=1
         dthrust=vec(0,0,0)
         duck.v=vec(0,0,0)
-    #오리가 오른쪽으로 벗어났을 때     
     else if duck.pos.x>=125+5:
         duck.pos=vec(0,70,0)
         life=life-1
-        
         if duck.v.x>0:
             duck.rotate(angle=pi, axis=vec(0,1,0))
-            
+            #error=1
         dthrust=vec(0,0,0)
         duck.v=vec(0,0,0)
-        
-    #  오리가 밑으로 벗어났을 때   
     else if duck.pos.y<=-(70+5):
         duck.pos=vec(0,70,0)
         life=life-1
-        
         if duck.v.x>0:
             duck.rotate(angle=pi, axis=vec(0,1,0))
-            
+            #error=1
         dthrust=vec(0,0,0)
         duck.v=vec(0,0,0)
  
