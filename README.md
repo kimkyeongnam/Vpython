@@ -1,2 +1,2 @@
 # Vpython
-Sejong University: General Physics and Simulation
+Sejong University: General Physics and Simulation Lecture
