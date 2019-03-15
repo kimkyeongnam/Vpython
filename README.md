@@ -9,7 +9,7 @@ This repository is for studying **General Physics and Simulation** Lecture in Se
    
 2. **Buoyancy.py** [[link]](https://github.com/kimkyeongnam/Vpython/blob/master/Buoyancy.py)
    Introducing theaws of physics that Occur when you put a piece of wood in water.
-   + **tag** : __Buoyancy__, Volume, Density, Mass, Gravity acceleration, coefficient of speed resistance, air resistance force
+   + **tag** : __**Buoyancy**__, Volume, Density, Mass, Gravity acceleration, coefficient of speed resistance, air resistance force
   
   
 3. Constant motion.py
