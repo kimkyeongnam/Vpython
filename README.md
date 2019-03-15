@@ -5,10 +5,11 @@ This repository is for studying **General Physics and Simulation** Lecture in Se
 ### Contents
 1. **2 Spring.py** [[link]](https://github.com/kimkyeongnam/Vpython/blob/master/2%20Spring.py)  
    Hang the ball on the spring, and check the pendulum movement by hanging the spring and ball under that ball.  
-   +**tag** : Spring
+   + **tag** : <U>Spring</U>
+   
 2. **Buoyancy.py** [[link]](https://github.com/kimkyeongnam/Vpython/blob/master/Buoyancy.py)
-
-  + **tag** : Buoyancy
+   Introducing theaws of physics that Occur when you put a piece of wood in water.
+   + **tag** : <U>Buoyancy</U>, Volume, Density, Mass, Gravity acceleration, coefficient of speed resistance, air resistance force
   
   
 3. Constant motion.py
