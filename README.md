@@ -40,14 +40,14 @@ This repository is for studying **General Physics and Simulation** Lecture in Se
    + **tag** : "Magnus effect", Velocity, Gravity
    
 10. **Spring.py** [[link]](https://github.com/kimkyeongnam/Vpython/blob/master/Spring.py)  
-   Physical Simulation for One Spring  
-   + **tag** : "Spring"  
+    Physical Simulation for One Spring  
+    + **tag** : "Spring"  
    
 11. **Throw the ball.py** [[link]](https://github.com/kimkyeongnam/Vpython/blob/master/Throw%20the%20ball.py)  
-   Pysical Simulation in which a ball is thrown into a moving ring  
-   + **tag** : Gravity, Constant velocity movement  
+    Pysical Simulation in which a ball is thrown into a moving ring  
+    + **tag** : Gravity, Constant velocity movement  
   
 12. [Project]Happy Lunch Time of Sejong Ducks.py  
-   **Term Project**  
-   + **story** : The ducks of Sejong University are trapped behind the museum due to AI. Because of the humans who lock up ducks and don't feed them, angry ducks escape from their cages to survive and begin their self-sufficiency by eating fish in the Asadal Pond...  
-   + **tag** : Buoyancy, Density, Volume, Fluid resistance, Driving force
+    **Term Project**  
+    + **story** : The ducks of Sejong University are trapped behind the museum due to AI. Because of the humans who lock up ducks and don't feed them, angry ducks escape from their cages to survive and begin their self-sufficiency by eating fish in the Asadal Pond...  
+    + **tag** : Buoyancy, Density, Volume, Fluid resistance, Driving force
