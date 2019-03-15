@@ -71,4 +71,5 @@ This repository is for studying **General Physics and Simulation** Lecture in Se
   
 12. **[Project]Happy Lunch Time of Sejong Ducks.py** [[link]](https://github.com/kimkyeongnam/Vpython/blob/master/%5BProject%5DHappy%20Lunch%20Time%20of%20Sejong%20Ducks.py) **"Term Project(Game)"**  
     + **story** : The ducks of Sejong University are trapped behind the museum due to AI. Because of the humans who lock up ducks and don't feed them, angry ducks escape from their cages to survive and begin their self-sufficiency by eating fish in the Asadal Pond...  
+    + **Operating key** : Rudder keyboard
     + **tag** : Buoyancy, Density, Volume, Fluid resistance, Driving force
