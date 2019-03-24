@@ -1,6 +1,6 @@
 # Vpython
 This repository is for studying **General Physics and Simulation** Lecture in Sejong University.  
-- **General Physics and Simulation** Lecture is to learn physical theory and produce programs based on vpython using [glowscript](https://www.glowscript.org/#/).   
+**General Physics and Simulation** Lecture is to learn physical theory and produce programs based on vpython using [glowscript](https://www.glowscript.org/#/).   
 
 ### Contents
 1. **2 Spring.py** [[link]](https://github.com/kimkyeongnam/Vpython/blob/master/2%20Spring.py)  
